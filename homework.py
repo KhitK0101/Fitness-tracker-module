@@ -116,7 +116,7 @@ class Swimming(Training):
                 / self.M_IN_KM / self.duration)
 
 
-def read_package(workout_type: str, data: list[str]) -> Training:
+def read_package(workout_type: str, data: list[float]) -> Training:
     """Прочитать данные полученные от датчиков."""
     workout_types: dict[str, type[Training]] = {'RUN': Running,
                                                 'WLK': SportsWalking,
