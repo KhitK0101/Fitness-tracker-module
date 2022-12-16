@@ -116,11 +116,11 @@ class Swimming(Training):
                 / self.M_IN_KM / self.duration)
 
 
-def read_package(workout_type: str, data: list[float]) -> Training:
+def read_package(workout_type: str, data: typing.List[float]) -> Training:
     """Прочитать данные полученные от датчиков."""
-    workout_types: dict[str, type[Training]] = {'RUN': Running,
-                                                'WLK': SportsWalking,
-                                                'SWM': Swimming}
+    workout_types = {'RUN': Running,
+                     'WLK': SportsWalking,
+                     'SWM': Swimming}
 
     if workout_type not in workout_types:
         raise KeyError('<key_name>')
