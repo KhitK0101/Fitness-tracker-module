@@ -116,11 +116,14 @@ class Swimming(Training):
                 / self.M_IN_KM / self.duration)
 
 
-def read_package(workout_type: str, data: list[float]) -> Training:
+def read_package(workout_type: str, data: list) -> Training:
+    # def read_package(workout_type: str, data: list[float]) -> Training:
+    # workout_types: dict[str, type[Training]] = 
+    # Написал вот так, не проходит с ошибкой 'type' object is not subscriptable
     """Прочитать данные полученные от датчиков."""
-    workout_types: dict[str, type[Training]] = {'RUN': Running,
-                                                'WLK': SportsWalking,
-                                                'SWM': Swimming}
+    workout_types = {'RUN': Running,
+                     'WLK': SportsWalking,
+                     'SWM': Swimming}
 
     if workout_type not in workout_types:
         raise KeyError('<key_name>')
