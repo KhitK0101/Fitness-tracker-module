@@ -1,4 +1,5 @@
 from dataclasses import dataclass, asdict
+from typing import Type
 
 
 @dataclass
@@ -48,7 +49,7 @@ class Training:
 
     def get_spent_calories(self) -> float:
         """Получить количество затраченных калорий."""
-        raise NotImplementedError('<текст сообщения>')
+        raise NotImplementedError('Время для тренировки!')
 
     def show_training_info(self) -> InfoMessage:
         """Вернуть информационное сообщение о выполненной тренировке."""
@@ -116,17 +117,14 @@ class Swimming(Training):
                 / self.M_IN_KM / self.duration)
 
 
-def read_package(workout_type: str, data: list) -> Training:
-    # def read_package(workout_type: str, data: list[float]) -> Training:
-    # workout_types: dict[str, type[Training]] =
-    # Написал вот так, не проходит с ошибкой 'type' object is not subscriptable
+def read_package(workout_type: str, data: list[float]) -> Training:
     """Прочитать данные полученные от датчиков."""
-    workout_types = {'RUN': Running,
-                     'WLK': SportsWalking,
-                     'SWM': Swimming}
+    workout_types: dict[str, Type[Training]] = {'RUN': Running,
+                                                'WLK': SportsWalking,
+                                                'SWM': Swimming}
 
     if workout_type not in workout_types:
-        raise KeyError('<key_name>')
+        raise ValueError(f'Ошибка тренировки: "{workout_type}".')
     return workout_types[workout_type](*data)
 
 
