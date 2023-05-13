@@ -22,6 +22,5 @@
 git clone https://github.com/KhitK0101/hw_python_oop.git
 ```
 2.  Открыть и запустить проект в любом удобном IDE.
-3.  
 ## Автор 
 Хитяев Кирилл 
